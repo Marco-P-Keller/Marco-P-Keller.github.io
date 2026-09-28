@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HeartDistance — you're invited</title>
+<meta name="description" content="Tie the thread with me on HeartDistance: photos and the distance between you, right on your Home Screen.">
+<meta name="apple-itunes-app" content="app-id=6754918119">
+<meta name="theme-color" content="#42123A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HeartDistance">
+<meta property="og:title" content="Tie the thread with me on HeartDistance ❤️">
+<meta property="og:description" content="Photos and the distance between us, right on our Home Screens.">
+<meta property="og:image" content="https://marco-p-keller.github.io/og.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/icon.png">
+<link rel="apple-touch-icon" href="/icon.png">
+<style>
+  :root {
+    --top: #994769;
+    --mid: #6E2652;
+    --bottom: #42123A;
+    --glow: rgba(255, 199, 173, 0.34);
+    --ember: #FF6B59;
+    --soft: #FFB5A1;
+    --ink: #330D1F;
+    --text: #FFF6F4;
+    --text-2: #FCD4E0;
+    --glass: rgba(255, 255, 255, 0.10);
+    --hairline: rgba(255, 255, 255, 0.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: linear-gradient(180deg, var(--top) 0%, var(--mid) 48%, var(--bottom) 100%) fixed;
+    background-color: var(--bottom);
+    color: var(--text);
+    font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    padding: max(28px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at 50% -10%, var(--glow), transparent 60%);
+    pointer-events: none;
+  }
+  main { position: relative; width: 100%; max-width: 440px; text-align: center; }
+  .icon { width: 76px; height: 76px; border-radius: 18px; box-shadow: 0 12px 34px rgba(51, 13, 31, 0.5); }
+  .whisper {
+    font-family: ui-serif, "New York", Georgia, serif;
+    font-style: italic;
+    color: var(--text-2);
+    font-size: 19px;
+    margin: 22px 0 4px;
+  }
+  h1 { font-size: 30px; line-height: 1.15; margin: 0 0 10px; font-weight: 800; }
+  .lead { color: var(--text-2); font-size: 16px; line-height: 1.45; margin: 0 auto 24px; max-width: 360px; }
+  .card {
+    background: var(--glass);
+    border: 1px solid var(--hairline);
+    border-radius: 24px;
+    padding: 22px 18px;
+    box-shadow: 0 18px 40px rgba(34, 2, 18, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .label { font-size: 13px; font-weight: 600; color: var(--text-2); letter-spacing: 0.02em; }
+  .code {
+    font-size: 40px; font-weight: 800; letter-spacing: 0.22em;
+    color: var(--soft);
+    margin: 8px 0 18px;
+    padding-left: 0.22em;
+    font-variant-numeric: tabular-nums;
+    user-select: all; -webkit-user-select: all;
+  }
+  .btn {
+    display: block; width: 100%;
+    border: 0; border-radius: 999px;
+    padding: 17px 20px;
+    font: inherit; font-size: 17px; font-weight: 700;
+    text-decoration: none; cursor: pointer;
+  }
+  .primary {
+    color: var(--ink);
+    background: linear-gradient(180deg, var(--soft), var(--ember));
+    box-shadow: 0 10px 26px rgba(255, 107, 89, 0.38);
+  }
+  .ghost {
+    margin-top: 12px;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--hairline);
+  }
+  ol { text-align: left; margin: 22px 4px 0; padding-left: 22px; color: var(--text-2); font-size: 15px; line-height: 1.55; }
+  ol b { color: var(--text); font-weight: 700; }
+  .toast { min-height: 22px; margin-top: 12px; font-size: 14px; color: var(--soft); }
+  footer { margin-top: 28px; font-size: 12px; color: rgba(252, 212, 224, 0.65); }
+  footer a { color: inherit; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="/icon.png" alt="">
+  <p class="whisper" id="whisper">a thread is waiting for you</p>
+  <h1 id="title">You're invited to HeartDistance</h1>
+  <p class="lead" id="lead">Their photos and the distance between you — right on your Home Screen.</p>
+
+  <section class="card" id="withCode">
+    <div class="label" id="codeLabel">Your code</div>
+    <div class="code" id="code">······</div>
+    <a class="btn primary" id="getApp" href="https://apps.apple.com/app/id6754918119">Copy code &amp; get the app</a>
+    <a class="btn ghost" id="openApp" href="#">I already have HeartDistance</a>
+    <div class="toast" id="toast" aria-live="polite"></div>
+    <ol id="steps">
+      <li><b>Get HeartDistance</b> — it's free.</li>
+      <li>Open it and tap <b>“I have a code”</b>.</li>
+      <li>Tap <b>Paste</b> — and you're connected.</li>
+    </ol>
+  </section>
+
+  <section class="card hidden" id="withoutCode">
+    <a class="btn primary" id="getAppPlain" href="https://apps.apple.com/app/id6754918119">Get HeartDistance</a>
+  </section>
+
+  <footer>
+    HeartDistance ·
+    <a href="https://marco-p-keller.github.io/heartdistance-legal/privacy.html" id="privacy">Privacy</a>
+  </footer>
+</main>
+<script>
+(function () {
+  var APP_STORE = "https://apps.apple.com/app/id6754918119";
+  var ALPHABET = /^[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{6}$/;
+  var params = new URLSearchParams(location.search);
+  var code = (params.get("c") || "").toUpperCase().replace(/[^0-9A-Z]/g, "");
+  var name = (params.get("n") || "").trim().slice(0, 20);
+  var de = (navigator.language || "").toLowerCase().indexOf("de") === 0;
+
+  var t = de ? {
+    whisper: "ein Faden wartet auf dich",
+    title: name ? name + " lädt dich zu HeartDistance ein" : "Du bist zu HeartDistance eingeladen",
+    lead: "Fotos und die Distanz zwischen euch – direkt auf eurem Home-Bildschirm.",
+    codeLabel: "Euer Code",
+    getApp: "Code kopieren & App laden",
+    openApp: "Ich habe HeartDistance schon",
+    copied: "Code kopiert ✓",
+    steps: [
+      "<b>HeartDistance laden</b> – kostenlos.",
+      "Öffnen und <b>„Ich habe einen Code“</b> tippen.",
+      "<b>Einfügen</b> tippen – und ihr seid verbunden."
+    ],
+    plain: "HeartDistance laden",
+    privacy: "Datenschutz",
+    docTitle: "HeartDistance – du bist eingeladen"
+  } : {
+    whisper: "a thread is waiting for you",
+    title: name ? name + " invited you to HeartDistance" : "You're invited to HeartDistance",
+    lead: "Their photos and the distance between you — right on your Home Screen.",
+    codeLabel: "Your code",
+    getApp: "Copy code & get the app",
+    openApp: "I already have HeartDistance",
+    copied: "Code copied ✓",
+    steps: [
+      "<b>Get HeartDistance</b> — it's free.",
+      "Open it and tap <b>“I have a code”</b>.",
+      "Tap <b>Paste</b> — and you're connected."
+    ],
+    plain: "Get HeartDistance",
+    privacy: "Privacy",
+    docTitle: "HeartDistance — you're invited"
+  };
+
+  function set(id, text) { document.getElementById(id).textContent = text; }
+  document.documentElement.lang = de ? "de" : "en";
+  document.title = t.docTitle;
+  set("whisper", t.whisper);
+  set("title", t.title);
+  set("lead", t.lead);
+  set("privacy", t.privacy);
+
+  if (!ALPHABET.test(code)) {
+    document.getElementById("withCode").classList.add("hidden");
+    document.getElementById("withoutCode").classList.remove("hidden");
+    set("getAppPlain", t.plain);
+    return;
+  }
+
+  set("codeLabel", t.codeLabel);
+  set("code", code);
+  set("getApp", t.getApp);
+  set("openApp", t.openApp);
+  var steps = document.getElementById("steps").children;
+  for (var i = 0; i < steps.length; i++) steps[i].innerHTML = t.steps[i];
+
+  document.getElementById("openApp").href = "heartdistance://pair?code=" + code;
+
+  document.getElementById("getApp").addEventListener("click", function (event) {
+    event.preventDefault();
+    function go() { location.href = APP_STORE; }
+    var done = function () {
+      set("toast", t.copied);
+      setTimeout(go, 650);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done, go);
+    } else {
+      go();
+    }
+  });
+})();
+</script>
+</body>
+</html>

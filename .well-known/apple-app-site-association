@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["B97SQSQBMR.com.example.heartdistance"],
+        "components": [
+          { "/": "/join/*", "comment": "HeartDistance pairing invites" }
+        ]
+      }
+    ]
+  }
+}
